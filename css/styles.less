@@ -2,9 +2,13 @@
 @bg-bg-color : #355664;
 @fg-color: #fcfcfc;
 @shd-color: #333;
+@a-color: #0196e3;
+
 @aradius: 20px;
 @fradius: 10px;
 @slradius: 3px;
+
+@qt-color: desaturate(spin(@a-color, -60), 50%);
 
 *{
 	/* Universal reset: */
@@ -30,7 +34,7 @@ body{
 /* Hyperlink Styles: */
 
 a, a:visited {
-	color:#0196e3;
+	color:@a-color;
 	text-decoration:none;
 	outline:none;
 
@@ -57,12 +61,12 @@ h1,h2,h3,h4{
 h1{
 
     /* The logo text */
-    
+
     font-size:3.5em;
     padding:0.5em 0 0;
 }
 
-header 
+header
 {
     padding-top: 20px;
     h1{}
@@ -123,7 +127,7 @@ nav{
 
 	top:4em;
 	top-margin:4em;
-	
+
 	border:1px solid @fg-color;
 
 	-moz-box-shadow:0 1px 1px @shd-color;
@@ -187,7 +191,7 @@ article{
 	background-color:@bg-color;
 	margin:3em 0;
 	padding:20px;
-	
+
 }
 
 figure{
@@ -211,7 +215,7 @@ figure{
 	    -webkit-box-shadow:0 0 2px #4D7788;
 	    box-shadow:0 0 2px #4D7788;
         }
-        
+
         &.abstract{
 	    /* max-width:300px; */
 	    /* max-height:150px; */
@@ -267,12 +271,12 @@ footer{
 
 blockquote {
     margin: 1em 2em;
-    padding-left: 1em; 
+    padding-left: 1em;
     p:first-letter {
 	    float: left;
 	    margin: .2em .3em .1em 0;
 	    font-size: 220%;
-	    font-weight: bold; 
+	    font-weight: bold;
     }
     &:hover{
 	    -moz-box-shadow:1px 2px 2px #4D7788;
@@ -285,7 +289,7 @@ blockquote {
         float: left;
         margin-right: .2em;
         font-size: 220%;
-        font-weight: bold; 
+        font-weight: bold;
     }
 
 }
@@ -293,8 +297,20 @@ blockquote {
 
 ul {
     margin: 0.2em 0.1em;
-    padding-left: 1.5em; 
+    padding-left: 1.5em;
 }
+
+.qtbase {
+	color:@qt-color;
+	text-decoration:none;
+	outline:none;
+}
+
+.qqtp {
+    color: @fg-color;
+    backgrounde-color: @bg-bg-color;
+}
+
 
 .status_light {
 	padding: 0.2em 0.2em;
@@ -311,4 +327,3 @@ ul {
         }
 
 }
-
