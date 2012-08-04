@@ -301,9 +301,18 @@ ul {
 }
 
 .qtbase {
-	color:@qt-color;
-	text-decoration:none;
-	outline:none;
+	/* color:@qt-color; */
+    &:after {
+        content : "*";
+        position: relative;
+        bottom: 2 rem;
+        vertical-align: baseline;
+    }
+
+    &:hover {
+	text-decoration: underline;
+        color: @qt-color;
+    }
 }
 
 .qqtp {
