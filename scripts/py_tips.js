@@ -5,8 +5,8 @@
 $(document).ready(function(){
 
     $('#hanzi').qtip({
-        content: 'A number of names can be used:\
-<ul>\
+        content: {
+            text:'<ul>\
 <li>Chinese\
 <li>Mandarin\
 <li>Hanzi\
@@ -14,19 +14,77 @@ $(document).ready(function(){
 <li>漢字\
 <li>Expression\
 </ul>',
-        style: {classes: 'qtp'}
+            title: {
+	        text: 'A number of names can be used:',
+                button: true
+            }
+        },
+        show: {
+	    solo: true
+	},
+        hide: {
+            fixed: true,
+            delay: 1000
+        },
+        style: {
+            classes: 'ui-tooltip-rounded ui-tooltip-shadow',
+        },
+
+
     });
 
     $('#ruby').qtip({
-        content: 'Two names can be used:\
-<ul>\
+        content: {
+            text:'<ul>\
 <li>Ruby\
 <li>Reading\
 </ul>',
-      style: {
-          classes: 'ui-tooltip-rounded ui-tooltip-shadow ',
-          color: 'red'
-      }
+            title: {
+	        text: 'Two names can be used:',
+                button: true
+            }
+
+        },
+        style: {
+            classes: 'ui-tooltip-rounded ui-tooltip-shadow',
+        },
+        show: {
+	    solo: true
+	},
+        hide: {
+            fixed: true,
+            delay: 1000
+        }
+    });
+
+    $('#tones').qtip({
+        content: {
+            text:'For this field, no alternative names are defined.',
+
+        },
+        style: {
+            classes: 'ui-tooltip-rounded ui-tooltip-shadow',
+        },
+        show: {
+	    solo: true
+	},
+        hide: {
+            fixed: true,
+            delay: 1000
+        }
+    });
+
+
+    $('.sorryjap').qtip({
+        content: {
+            text:'Anki reveals its Japanese roots through these terms.',
+        },
+        style: {
+            classes: 'ui-tooltip-rounded ui-tooltip-shadow',
+        },
+        show: {
+	    solo: true
+	}
     });
 
 });
