@@ -64,22 +64,48 @@
     <ul>
       <li>Click on Add in the top bar to open the Add note window,
       <li>There, click on the note type at the top,
-      <li>at Choose note type, on Manage,
-      <li>at Note Type on Add
-      <li>and at Add Note Type, select Add: Chinese and click on OK.
+      <li>at Choose Note Type, on Manage,
+      <li>at Note Type, on Add.
+      <li>At Add Note Type, select Add: Chinese and click on OK.
       <li>Then, make sure that the name you select contains the word
       “Chinese”. This is used as a code word later.
       <li>Close the Note Types.
       <li>And at Choose Note Type, choose the newly createtd Chinese
       type and click on Choose.
     </ul>
+    <p>You have to go through these steps only <span class="qtbase"
+    id="once">once</span>. After that, you
+    have the note type ready. When you want to add more cards and you
+    click on Add, either the type is already selected or you click on
+    the note type, click on Chinese and on Choose.
     <h3>The note type – Help</h3>
     The note type is a quick hack. It uses a <em>Japanese</em> font
     for displaying the Chinese text. The reason is simple: i don’t
     know which Chinese fonts can be safely used as standard. Which
     Chinese fonts are installed with basic Chinese support on
     different operating systems.
-    <p>To fix this, i need help.
+    <p>In general, the whole model is more a proof of concept and a
+    way to test the reading generation than a deck that is useful for
+    learning Chinese.
+    <p>To fix this, i need help. Just sending me a nicely formated
+    Anki 2 deck that is used to actually learn Chinese would be a
+    help. I don’t need thousands of Chinese words, so reducing it to a
+    few notes would be a nice gesture.
+    <p>The ideal way would be to fork the whole repository, write it
+    up as a standard model in the file
+    <a href="https://github.com/ospalh/chinese-support-addon/blob/master/chinese/model.py"><tt>model.py</tt></a>
+    and set a pull request. Or even better yet, take over the whole
+    development.
+    <h3>Updates</h3>
+
+    When the model has changed with an update of the add-on, you will
+    have to add the model again, going through the steps
+    above. Depending on the changes, you may want to change the note
+    type of your existing cards, so that they use the new model. When
+    you have customized your old model, you will have to decide what
+    to do about the changes introduced in the update: ignore them,
+    make similar changes to your model, or move your cards to the new
+    model and re-customize that model.
   </div>
 </article>
 
@@ -99,7 +125,7 @@
 <script src="/scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src="/scripts/jquery.qtip.min.js"
    type="text/javascript"></script>
-
+<script type="text/javascript" src="/scripts/nt_tips.js"></script>
 
 </body>
 </html>
