@@ -1,6 +1,6 @@
 # -*- coding: utf-8 ; mode: python -*-
 #
-#   Copyright © 2012 by Roland Sieker, <ospalh@gmail.com> 
+#   Copyright © 2012 by Roland Sieker, <ospalh@gmail.com>
 #   Copyright © 2012 by Thomas TEMPÉ, <thomas.tempe@alysse.org>
 #
 # License: GNU GPL, version 3 or later; http://www.gnu.org/copyleft/gpl.html
@@ -8,10 +8,12 @@
 import os.path
 import json
 import __init__
-from aqt import mw
+from aqt.qt import mw
 
-initial_options =  { 
-'startup_tip_number':0, 
+
+
+initial_options =  {
+'startup_tip_number':0,
 'show_startup_tips':True,
 'dictionary':'None',
 'transcription':'Pinyin',
@@ -38,7 +40,7 @@ startup_tips = [
 class config:
     filepath = ""
     options = {}
-    
+
     def __init__(self):
         #self.filepath = os.path.join(mw.pm.profileFolder(), "chinese_config.json")
         self.filepath = os.path.join(mw.pm.addonFolder(), "chinese", "chinese_addon_config.json")
@@ -50,13 +52,16 @@ class config:
     def load(self):
         if not os.path.exists(self.filepath):
             self.create_new()
-        self.options = json.load(open(self.filepath, 'r')) 
+        self.options = json.load(open(self.filepath, 'r'))
 
     def save(self):
         json.dump(self.options, open(self.filepath, 'w'))
 
     def create_new(self):
-        self.options = initial_options
+        if getattr(mw.addonsManager, "getConfig", None):
+            self.config = mw.addonManager.getConfig(__name__)
+        else:
+            self.options = initial_options
         self.save()
 
     def set_option(self, name, value):
