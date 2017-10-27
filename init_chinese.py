@@ -30,21 +30,34 @@ A Plugin for the Anki2 Spaced Repition learning system,
 # All config options are in the add-on menu.
 
 
-import os, sys, os.path, re
+import os
+import sys
+import os.path
+import re
 from aqt import mw
 from aqt.utils import isWin
 
 # Python path hacks
 #################################################################
 
-#Add local copy of sqlalchemy to Python path, for cjklib to work.
+py_major = sys.version_info.major
+pyversion = "%d.%d" % (py_major, sys.version_info.minor)
+
+subdir = 'chinese'
+if py_major == 3:
+    subdir = '.'
+
+# Add local copy of sqlalchemy to Python path, for cjklib to work.
 addon_dir = mw.pm.addonFolder()
 if isWin:
     addon_dir = addon_dir.encode(sys.getfilesystemencoding())
-sys.path.insert(0, os.path.join(addon_dir, "chinese") )
-#Import a few modules from the full Python distribution,
-#which don't come with Anki on Windows or MacOS but are needed for cjklib
-sys.path.append( os.path.join(addon_dir, "chinese", "python-2.7-modules") )
+
+sys.path.insert(0, os.path.join(addon_dir, subdir))
+
+# Import a few modules from the full Python distribution,
+# which don't come with Anki on Windows or MacOS but are needed for cjklib
+sys.path.append(os.path.join(addon_dir, subdir,
+                             "python-%s-modules" % pyversion))
 
 # Quick-and-dirty trick to remove cjklib warning on a Linux with a
 # full python install, about having two different versions of
@@ -52,16 +65,20 @@ sys.path.append( os.path.join(addon_dir, "chinese", "python-2.7-modules") )
 sys.path = filter(
     lambda a: not(re.search(r'(dist|site)-packages$', a)), sys.path)
 
-import chinese.upgrade
-import chinese.templates.ruby ; chinese.templates.ruby.install()
-import chinese.templates.chinese ; chinese.templates.chinese.install()
 
-import chinese.ui
-import chinese.edit
-import chinese.models.basic
-import chinese.models.advanced
-#import chinese.models.compatibility
-#import chinese.models.ruby
-#import chinese.models.ruby_synonyms
-import chinese.ui
-import chinese.graph
+def init_chinese(python_major):
+    # import upgrade
+    import templates.ruby
+    templates.ruby.install()
+    import templates.chinese
+    templates.chinese.install()
+
+    import ui
+    import edit
+    import models.basic
+    import models.advanced
+    # import models.compatibility
+    # import models.ruby
+    # import models.ruby_synonyms
+    import graph
+

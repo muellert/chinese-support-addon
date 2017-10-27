@@ -9,18 +9,30 @@
 #This should stay written exactly this way, and keep the same parenthesis
 #format, as it is parsed by a very simple regexp to check for next
 #release info from github, in config.py
-__version__ = """0.10.10"""
+__version__ = """0.10.11a"""
 ankiweb_number = "3448800906"
-release_info = """This version fixes Google TTS sound generation.<br>
-Thanks to Glutaminate for providing the fix."""
+release_info = """This version attempts to work with anki 2.1"""
 
-prev = """<ul>
-<li>Improved Taiwan Pinyin and Bopomofo transcription.</li>
-<li>Added "Fill missing" features.</li>
-<li>Added Cantonese speech</li>
-</ul>
-Many thanks to <b>Varbird</b> for these improvements!
-<br><b>If you are studying Cantonese or Taiwan Pinyin:</b> please rename your <tt>Pinyin</tt> field to <tt>Reading</tt>. From now on, transcription choice only applies to the <tt>Reading</tt> field. <tt>Pinyin</tt> will always be treated as Pinyin. This change allows you have both Pinyin and Bopomofo in the same note.
-
+prev = """
 <br><b>Note to advanced users:</b> This version includes a rewritten <tt>edit_behavior.py</tt> function. If you did some customizations, you can keep using your version, but the new "fill missing" features will not work.</b>
 """
+
+# import the main window object (mw) from aqt
+from aqt import mw
+# import the "show info" tool from utils.py
+from aqt.utils import showInfo
+# import all of the Qt GUI library
+from aqt.qt import *
+
+from .init_chinese import init_chinese
+
+# We're going to add a menu item below. First we want to create a function to
+# be called when the menu item is activated.
+
+# create a new menu item, "test"
+action = QAction("Chinese Addon", mw)
+# set it to call testFunction when it's clicked
+# need to loop in the add-on:
+action.triggered.connect(init_chinese)
+# and add it to the tools menu
+mw.form.menuTools.addAction(action)
